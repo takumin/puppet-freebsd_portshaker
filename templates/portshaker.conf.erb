@@ -1,0 +1,25 @@
+# vim: set syntax=sh :
+
+#---[ Base directory for mirrored Ports Trees ]---
+mirror_base_dir="<%= @base_dir %>"
+
+#---[ Using ZFS ]---
+use_zfs="<%= @use_zfs %>"
+
+#---[ Directories where to merge ports ]---
+ports_trees="<%= @target.join(' ') %>"
+
+<% if defined? @target -%>
+<%   @target.each do |name, values| -%>
+#---[ <%= name %> Ports Tree ]---
+<%     if defined? values[:zfs] -%>
+<%= name %>_zfs_dataset="<%= values[:zfs] %>"
+<%     end -%>
+<%     if defined? values[:tree] -%>
+<%= name %>_ports_tree="<%= values[:tree] %>"
+<%     end -%>
+<%     if defined? values[:merge] -%>
+<%= name %>_merge_from="<%= values[:merge] %>"
+<%     end -%>
+<%   end -%>
+<% end -%>
