@@ -7,7 +7,7 @@ mirror_base_dir="<%= @base_dir %>"
 use_zfs="<%= @use_zfs %>"
 
 #---[ Directories where to merge ports ]---
-ports_trees="<%= @target.join(' ') %>"
+ports_trees="<%= @target.keys %>"
 
 <% if defined? @target -%>
 <%   @target.each do |name, values| -%>
