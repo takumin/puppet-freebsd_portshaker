@@ -10,9 +10,9 @@ class freebsd_portshaker::params {
       $package_ensure  = 'present'
       $prefix          = '/usr/local'
       $config          = "$prefix/etc/portshaker.conf"
-      $config_template = 'portshaker/portshaker.conf.erb'
+      $config_template = 'freebsd_portshaker/portshaker.conf.erb'
       $source_dir      = "$prefix/etc/portshaker.d"
-      $source_template = 'portshaker/source.erb'
+      $source_template = 'freebsd_portshaker/source.erb'
       $base_dir        = '/var/cache/portshaker'
       $use_zfs         = 'yes'
       $target          = {
