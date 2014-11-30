@@ -8,7 +8,7 @@ class freebsd_portshaker::config {
     owner   => 'root',
     group   => 'wheel',
     mode    => '0644',
-    content => template($::config_template),
+    content => template($config_template),
   }
   define portshaker_source ($param) {
     file { "$source_dir/$name":
