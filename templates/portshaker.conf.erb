@@ -7,19 +7,21 @@ mirror_base_dir="<%= @base_dir %>"
 use_zfs="<%= @use_zfs %>"
 
 #---[ Directories where to merge ports ]---
-ports_trees="<%= @target.keys %>"
+ports_trees="<%= @target.keys.join(' ') %>"
 
 <% if defined? @target -%>
 <%   @target.each do |name, values| -%>
 #---[ <%= name %> Ports Tree ]---
-<%     if defined? values[:zfs] -%>
-<%= name %>_zfs_dataset="<%= values[:zfs] %>"
-<%     end -%>
-<%     if defined? values[:tree] -%>
-<%= name %>_ports_tree="<%= values[:tree] %>"
-<%     end -%>
-<%     if defined? values[:merge] -%>
-<%= name %>_merge_from="<%= values[:merge] %>"
+<%     values.each do |key, value| -%>
+<%       if key == 'zfs' -%>
+<%= name %>_zfs_dataset="<%= value %>"
+<%       end -%>
+<%       if key == 'tree' -%>
+<%= name %>_ports_tree="<%= value %>"
+<%       end -%>
+<%       if key == 'merge' -%>
+<%= name %>_merge_from="<%= value %>"
+<%       end -%>
 <%     end -%>
 <%   end -%>
 <% end -%>
