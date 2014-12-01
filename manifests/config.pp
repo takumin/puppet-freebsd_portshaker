@@ -19,5 +19,5 @@ class freebsd_portshaker::config {
       content => template($::freebsd_portshaker::source_template),
     }
   }
-  create_resources(portshaker_source, $source)
+  create_resources(portshaker_source, $::freebsd_portshaker::source)
 }
