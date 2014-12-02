@@ -1,10 +1,13 @@
-# vim: set syntax=sh :
+# Managed Puppet.
+#
+
+<% if @use_zfs -%>
+#---[ Using ZFS ]---
+use_zfs="yes"
+<% end -%>
 
 #---[ Base directory for mirrored Ports Trees ]---
 mirror_base_dir="<%= @base_dir %>"
-
-#---[ Using ZFS ]---
-use_zfs="<%= @use_zfs %>"
 
 #---[ Directories where to merge ports ]---
 ports_trees="<%= @target.keys.join(' ') %>"

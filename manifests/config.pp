@@ -3,6 +3,16 @@
 # This class is called from freebsd_portshaker for service config.
 #
 class freebsd_portshaker::config {
+  if $::freebsd_portshaker::use_zfs {
+    zfs { "$::freebsd_portshaker::base_zfs":
+      atime       => 'off',
+      compression => 'lz4'
+      dedup       => 'off',
+      mountpoint  => "$::freebsd_portshaker::base_dir",
+      setuid      => 'off'
+    }
+  }
+
   file { "$::freebsd_portshaker::config":
     ensure  => file,
     owner   => 'root',
@@ -10,6 +20,7 @@ class freebsd_portshaker::config {
     mode    => '0644',
     content => template($::freebsd_portshaker::config_template),
   }
+
   define portshaker_source ($method, $repos = '') {
     file { "$::freebsd_portshaker::source_dir/$name":
       ensure  => file,

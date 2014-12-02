@@ -14,10 +14,10 @@ class freebsd_portshaker::params {
       $source_dir      = "$prefix/etc/portshaker.d"
       $source_template = 'freebsd_portshaker/source.erb'
       $base_dir        = '/var/cache/portshaker'
-      $use_zfs         = 'yes'
+      $use_zfs         = false
+      $base_zfs        = ''
       $target          = {
         system => {
-          zfs   => 'zroot/ports',
           tree  => '/usr/ports',
           merge => 'freebsd',
         },

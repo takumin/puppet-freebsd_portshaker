@@ -20,6 +20,14 @@ class freebsd_portshaker (
   $source          = $::freebsd_portshaker::params::source,
 ) inherits ::freebsd_portshaker::params {
 
+  include stdlib
+
+  if $::freebsd_portshaker::use_zfs {
+    if empty($::freebsd_portshaker::base_zfs) {
+      fail('require $::freebsd_portshaker::base_zfs')
+    }
+  }
+
   class { '::freebsd_portshaker::install': } ->
   class { '::freebsd_portshaker::config': } ~>
   Class['::freebsd_portshaker']
