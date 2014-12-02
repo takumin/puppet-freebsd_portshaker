@@ -23,7 +23,9 @@ class freebsd_portshaker (
 
   include stdlib
 
-  if $::freebsd_portshaker::use_zfs {
+  validate_bool($::freebsd_portshaker::use_zfs)
+
+  if $::freebsd_portshaker::use_zfs == true {
     if empty($::freebsd_portshaker::base_zfs) {
       fail('require $::freebsd_portshaker::base_zfs')
     }
