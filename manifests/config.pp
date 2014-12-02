@@ -10,7 +10,7 @@ class freebsd_portshaker::config {
     mode    => '0644',
     content => template($::freebsd_portshaker::config_template),
   }
-  define portshaker_source ($method) {
+  define portshaker_source ($method, $repos = '') {
     file { "$::freebsd_portshaker::source_dir/$name":
       ensure  => file,
       owner   => 'root',

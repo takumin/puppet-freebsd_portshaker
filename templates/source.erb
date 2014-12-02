@@ -1,4 +1,14 @@
 #!/bin/sh
 . <%= @prefix %>/share/portshaker/portshaker.subr
 method="<%= @method %>"
+<% if @method == 'svn' || @method == 'git' || @method == 'hg' || @repos != '' -%>
+<%   case @method -%>
+<%   when 'svn' then -%>
+svn_checkout_path="<%= @repos %>"
+<%   when 'git' then -%>
+git_clone_uri="<%= @repos %>"
+<%   when 'hg' then -%>
+hg_clone_uri="<%= @repos %>"
+<%   end -%>
+<% end -%>
 run_portshaker_command $*
