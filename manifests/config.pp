@@ -5,11 +5,10 @@
 class freebsd_portshaker::config {
   if $::freebsd_portshaker::use_zfs {
     zfs { "$::freebsd_portshaker::base_zfs":
-      atime       => 'off',
-      compression => 'lz4'
-      dedup       => 'off',
+      atime       => off,
+      compression => lzjb,
       mountpoint  => "$::freebsd_portshaker::base_dir",
-      setuid      => 'off'
+      setuid      => off,
     }
   }
 

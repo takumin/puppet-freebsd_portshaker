@@ -16,6 +16,7 @@ class freebsd_portshaker (
   $source_template = $::freebsd_portshaker::params::source_template,
   $base_dir        = $::freebsd_portshaker::params::base_dir,
   $use_zfs         = $::freebsd_portshaker::params::use_zfs,
+  $base_zfs        = $::freebsd_portshaker::params::base_zfs,
   $target          = $::freebsd_portshaker::params::target,
   $source          = $::freebsd_portshaker::params::source,
 ) inherits ::freebsd_portshaker::params {
