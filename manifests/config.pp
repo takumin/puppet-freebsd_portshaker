@@ -4,11 +4,18 @@
 #
 class freebsd_portshaker::config {
   if $::freebsd_portshaker::use_zfs {
+    if $::operatingsystemmajrelease {
+      $compression = 'zle'
+    } else {
+      $compression = 'lz4'
+    }
+
     zfs { "$::freebsd_portshaker::base_zfs":
       atime       => off,
-      compression => lzjb,
-      mountpoint  => "$::freebsd_portshaker::base_dir",
+      compression => $compression,
       setuid      => off,
+      setexec     => off,
+      mountpoint  => $::freebsd_portshaker::base_dir,
     }
   }
 
