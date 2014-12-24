@@ -33,5 +33,6 @@ class freebsd_portshaker (
 
   class { '::freebsd_portshaker::install': } ->
   class { '::freebsd_portshaker::config': } ~>
+  class { '::freebsd_portshaker::sync': } ->
   Class['::freebsd_portshaker']
 }
