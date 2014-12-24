@@ -25,6 +25,34 @@ ports_trees="<%= @target.keys.join(' ') %>"
 <%       if key == 'merge' -%>
 <%= name %>_merge_from="<%= value %>"
 <%       end -%>
+<%       if key == 'preupdate' -%>
+<%= name %>_preupdate () {
+<%         value.each do |command| -%>
+	<%= command %>
+<%         end -%>
+}
+<%       end -%>
+<%       if key == 'postupdate' -%>
+<%= name %>_postupdate () {
+<%         value.each do |command| -%>
+	<%= command %>
+<%         end -%>
+}
+<%       end -%>
+<%       if key == 'premerge' -%>
+<%= name %>_premerge () {
+<%         value.each do |command| -%>
+	<%= command %>
+<%         end -%>
+}
+<%       end -%>
+<%       if key == 'postmerge' -%>
+<%= name %>_postmerge () {
+<%         value.each do |command| -%>
+	<%= command %>
+<%         end -%>
+}
+<%       end -%>
 <%     end -%>
 <%   end -%>
 <% end -%>
