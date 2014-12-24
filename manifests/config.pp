@@ -4,10 +4,10 @@
 #
 class freebsd_portshaker::config {
   if $::freebsd_portshaker::use_zfs {
-    if $::operatingsystemmajrelease {
-      $compression = 'zle'
-    } else {
+    if $::operatingsystemmajrelease >= 10 {
       $compression = 'lz4'
+    } else {
+      $compression = 'zle'
     }
 
     zfs { "$::freebsd_portshaker::base_zfs":
