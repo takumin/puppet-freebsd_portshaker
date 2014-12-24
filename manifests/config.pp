@@ -10,7 +10,7 @@ class freebsd_portshaker::config {
       $compression = 'zle'
     }
 
-    zfs { "$::freebsd_portshaker::base_zfs":
+    zfs { $::freebsd_portshaker::base_zfs:
       atime       => off,
       compression => $compression,
       exec        => off,
@@ -19,7 +19,7 @@ class freebsd_portshaker::config {
     }
   }
 
-  file { "$::freebsd_portshaker::config":
+  file { $::freebsd_portshaker::config:
     ensure  => file,
     owner   => 'root',
     group   => 'wheel',
