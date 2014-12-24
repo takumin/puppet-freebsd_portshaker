@@ -3,7 +3,7 @@
 # This class is called from freebsd_portshaker for service config.
 #
 define freebsd_portshaker::source ($method, $repos = '') {
-  validate_re($method, [ '^portsnap$', '^svn$', '^git$', '^hg$', '^rsync$' ])
+  validate_re($method, [ '^portsnap$', '^csup$', '^cvs$', '^svn$', '^git$', '^hg$', '^rsync$' ])
 
   file { "$::freebsd_portshaker::source_dir/$name":
     ensure  => file,
