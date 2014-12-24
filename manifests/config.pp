@@ -13,8 +13,8 @@ class freebsd_portshaker::config {
     zfs { "$::freebsd_portshaker::base_zfs":
       atime       => off,
       compression => $compression,
+      exec        => off,
       setuid      => off,
-      setexec     => off,
       mountpoint  => $::freebsd_portshaker::base_dir,
     }
   }
