@@ -11,7 +11,7 @@ class freebsd_portshaker::params {
       $prefix          = '/usr/local'
       $config          = "$prefix/etc/portshaker.conf"
       $config_template = 'freebsd_portshaker/portshaker.conf.erb'
-      $target_template = 'freebsd_portshaker/target.conf.erb'
+      $target_template = 'freebsd_portshaker/target.erb'
       $source_dir      = "$prefix/etc/portshaker.d"
       $source_template = 'freebsd_portshaker/source.erb'
       $base_dir        = '/var/cache/portshaker'

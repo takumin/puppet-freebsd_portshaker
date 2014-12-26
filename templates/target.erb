@@ -1,0 +1,39 @@
+
+#---[ <%= @name %> Ports Tree ]---
+<% if defined? @zfs -%>
+<%= @name %>_zfs_dataset="<%= @zfs %>"
+<% end -%>
+<% if defined? @tree -%>
+<%= @name %>_ports_tree="<%= @tree %>"
+<% end -%>
+<% if defined? @merge -%>
+<%= @merge %>_merge_from="<%= @merge %>"
+<% end -%>
+<% if defined? @preupdate -%>
+<%= @name %>_preupdate() {
+<%   @preupdate.each do |command| -%>
+	<%= command %>
+<%   end -%>
+}
+<% end -%>
+<% if defined? @postupdate -%>
+<%= @name %>_postupdate() {
+<%   @postupdate.each do |command| -%>
+	<%= command %>
+<%   end -%>
+}
+<% end -%>
+<% if defined? @premerge -%>
+<%= @name %>_premerge() {
+<%   @premerge.each do |command| -%>
+	<%= command %>
+<%   end -%>
+}
+<% end -%>
+<% if defined? @postmerge -%>
+<%= @name %>_postmerge() {
+<%   @postmerge.each do |command| -%>
+	<%= command %>
+<%   end -%>
+}
+<% end -%>
