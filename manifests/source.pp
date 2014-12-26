@@ -1,6 +1,6 @@
-# == Class freebsd_portshaker::config
+# == Class freebsd_portshaker::source
 #
-# This class is called from freebsd_portshaker for service config.
+# This class is called from freebsd_portshaker for source repository config
 #
 define freebsd_portshaker::source ($method, $repos = '') {
   validate_re($method, [ '^portsnap$', '^csup$', '^cvs$', '^svn$', '^git$', '^hg$', '^rsync$' ])
