@@ -14,6 +14,9 @@ define freebsd_portshaker::target (
   concat::fragment { "target_$name":
     target  => $::freebsd_portshaker::config,
     content => template($::freebsd_portshaker::target_template),
-    order   => '1'
+    order   => '1',
+    require => [
+      File[$::freebsd_portshaker::config],
+    ],
   }
 }
