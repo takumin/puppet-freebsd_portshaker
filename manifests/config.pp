@@ -19,13 +19,18 @@ class freebsd_portshaker::config {
     }
   }
 
-  file { $::freebsd_portshaker::config:
-    ensure  => file,
+  concat { $::freebsd_portshaker::config:
     owner   => 'root',
     group   => 'wheel',
     mode    => '0644',
-    content => template($::freebsd_portshaker::config_template),
   }
 
+  concat::fragment { 'config_header':
+    target  => $::freebsd_portshaker::config,
+    content => template($::freebsd_portshaker::config_template),
+    order   => '0'
+  }
+
+  create_resources(freebsd_portshaker::target, $::freebsd_portshaker::target)
   create_resources(freebsd_portshaker::source, $::freebsd_portshaker::source)
 }
