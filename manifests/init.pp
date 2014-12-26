@@ -12,6 +12,7 @@ class freebsd_portshaker (
   $package_ensure  = $::freebsd_portshaker::params::package_ensure,
   $config          = $::freebsd_portshaker::params::config,
   $config_template = $::freebsd_portshaker::params::config_template,
+  $target_template = $::freebsd_portshaker::params::target_template,
   $source_dir      = $::freebsd_portshaker::params::source_dir,
   $source_template = $::freebsd_portshaker::params::source_template,
   $base_dir        = $::freebsd_portshaker::params::base_dir,
