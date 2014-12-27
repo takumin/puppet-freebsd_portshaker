@@ -8,15 +8,12 @@ define freebsd_portshaker::target (
   $merge      = undef,
   $preupdate  = undef,
   $postupdate = undef,
-  $preupdate  = undef,
-  $postupdate = undef,
+  $premerge  = undef,
+  $postmerge = undef,
 ) {
   concat::fragment { "target_$name":
     target  => $::freebsd_portshaker::config,
     content => template($::freebsd_portshaker::target_template),
     order   => '1',
-    require => [
-      File[$::freebsd_portshaker::config],
-    ],
   }
 }

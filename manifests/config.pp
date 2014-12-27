@@ -28,7 +28,7 @@ class freebsd_portshaker::config {
   concat::fragment { 'config_header':
     target  => $::freebsd_portshaker::config,
     content => template($::freebsd_portshaker::config_template),
-    order   => '0'
+    order   => '0',
   }
 
   create_resources(freebsd_portshaker::target, $::freebsd_portshaker::target)
