@@ -7,7 +7,7 @@
 <%= @name %>_ports_tree="<%= @tree %>"
 <% end -%>
 <% if defined? @merge -%>
-<%= @merge %>_merge_from="<%= @merge %>"
+<%= @name %>_merge_from="<%= @merge %>"
 <% end -%>
 <% if defined? @preupdate -%>
 <%= @name %>_preupdate() {
