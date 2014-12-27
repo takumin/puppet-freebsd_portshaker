@@ -4,7 +4,14 @@
 #
 class freebsd_portshaker::sync {
   exec { 'portshaker -U -M':
-    path        => "$::freebsd_portshaker::prefix/bin",
+    path        => [
+      '/sbin',
+      '/bin',
+      '/usr/sbin',
+      '/usr/bin',
+      "$::freebsd_portshaker::prefix/sbin",
+      "$::freebsd_portshaker::prefix/bin",
+    ],
     refreshonly => true,
     require     => [
       File[$::freebsd_portshaker::config],
