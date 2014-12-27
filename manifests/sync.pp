@@ -4,6 +4,7 @@
 #
 class freebsd_portshaker::sync {
   exec { 'portshaker -U -M':
+    timeout     => 3600,
     path        => [
       '/sbin',
       '/bin',
